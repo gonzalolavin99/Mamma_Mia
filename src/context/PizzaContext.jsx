@@ -1,11 +1,11 @@
-// PizzaContext.js
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const PizzaContext = createContext();
 
 const initialState = {
   cart: [],
   total: 0,
+  pizzas: [], // Agrega la propiedad pizzas al estado inicial
 };
 
 const pizzaReducer = (state, action) => {
@@ -21,6 +21,11 @@ const pizzaReducer = (state, action) => {
         ...state,
         total: state.total + action.payload.price,
       };
+    case 'SET_PIZZAS':
+      return {
+        ...state,
+        pizzas: action.payload,
+      };
     case 'REMOVE_FROM_CART':
       // Implementar la lógica para reducir la cantidad o eliminar del carrito
       return state;
@@ -29,8 +34,24 @@ const pizzaReducer = (state, action) => {
   }
 };
 
+
 const PizzaProvider = ({ children }) => {
   const [state, dispatch] = useReducer(pizzaReducer, initialState);
+
+  // Simula la carga de pizzas desde una API (puedes reemplazar esto con una llamada real a tu API)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/pizzas.json');
+        const data = await response.json();
+        dispatch({ type: 'SET_PIZZAS', payload: data });
+      } catch (error) {
+        console.error('Error fetching pizzas:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <PizzaContext.Provider value={{ state, dispatch }}>

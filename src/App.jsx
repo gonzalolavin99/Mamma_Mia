@@ -1,12 +1,11 @@
-// App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Bar from "./components/Bar";
 import Home from "./views/Home";
 import { PizzaProvider } from "./context/PizzaContext";
 import Carro from "./views/Carro";
-import './App.css'
-
+import Detalle from "./views/Detalle"; // Importa la vista de Detalle
+import './App.css';
 
 const App = () => {
   return (
@@ -15,6 +14,7 @@ const App = () => {
         <Bar />
         <Routes>
           <Route path="/carro" element={<Carro />} />
+          <Route path="/detalle/:id" element={<Detalle />} /> {/* Nueva ruta para Detalle */}
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

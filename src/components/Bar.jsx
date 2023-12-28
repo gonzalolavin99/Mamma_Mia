@@ -16,12 +16,13 @@ const Bar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Navbar.Text>
           <Link to="/carro">
-            Carrito <Badge variant="info">{state.cart.length}</Badge>
+            Carrito <Badge variant="info">${state.total.toFixed(2)}</Badge>
           </Link>
         </Navbar.Text>
       </Navbar.Collapse>
     </Navbar>
   );
 };
+
 
 export default Bar;
