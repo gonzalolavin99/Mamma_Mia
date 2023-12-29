@@ -9,10 +9,8 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulando una llamada a una API (puedes reemplazar esto con una llamada real a tu API)
     const fetchData = async () => {
       try {
-        // Simulamos la carga de datos desde un archivo JSON
         const response = await fetch('/pizzas.json');
         const data = await response.json();
         setPizzas(data);

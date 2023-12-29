@@ -4,7 +4,7 @@ import Bar from "./components/Bar";
 import Home from "./views/Home";
 import { PizzaProvider } from "./context/PizzaContext";
 import Carro from "./views/Carro";
-import Detalle from "./views/Detalle"; // Importa la vista de Detalle
+import Detalle from "./views/Detalle"; 
 import './App.css';
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
         <Bar />
         <Routes>
           <Route path="/carro" element={<Carro />} />
-          <Route path="/detalle/:id" element={<Detalle />} /> {/* Nueva ruta para Detalle */}
+          <Route path="/detalle/:id" element={<Detalle />} /> 
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

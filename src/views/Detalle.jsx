@@ -1,13 +1,12 @@
-import React from 'react';
-import { usePizzaContext } from '../context/PizzaContext';
-import { useParams } from 'react-router-dom';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import React from "react";
+import { usePizzaContext } from "../context/PizzaContext";
+import { useParams } from "react-router-dom";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 const Detalle = () => {
   const { state, dispatch } = usePizzaContext();
   const { id } = useParams();
 
-  // Encuentra la pizza por ID
   const pizza = state.pizzas.find((pizza) => pizza.id === id);
 
   if (!pizza) {
@@ -15,7 +14,7 @@ const Detalle = () => {
   }
 
   const addToCart = () => {
-    dispatch({ type: 'ADD_TO_CART', payload: pizza });
+    dispatch({ type: "ADD_TO_CART", payload: pizza });
   };
 
   return (
@@ -25,7 +24,7 @@ const Detalle = () => {
       <p>{pizza.desc}</p>
       <p>
         <strong>Ingredients: </strong>
-        {pizza.ingredients.join(', ')}
+        {pizza.ingredients.join(", ")}
       </p>
       <p>
         <strong>Price: </strong>${pizza.price.toFixed(2)}

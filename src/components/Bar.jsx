@@ -1,4 +1,3 @@
-// Bar.js
 import React from 'react';
 import { Navbar, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
